@@ -1,0 +1,14 @@
+﻿@model mvc_Demo.Models.Product
+<div class="container">
+    <div class="col-sm-12 col-md-6">
+        <img class="card-img-top" src="~/Assets/img/Product/@Model.ImageName" alt="Product image" />
+    </div>
+    <div class="col-sm-12 col-md-6">
+        <div class="detail-body">
+            <h2 class="orange">@Model.Name</h2>
+            <p>@Model.Description</p>
+            <p>CHF @Model.SpecialPrice  <span class="red"><s>CHF @Model.NormalPrice</s></span></p>
+            <input class="button" type="button" value="Zum Warenkorb hinzufügen" onclick="location.href='@Url.Action("Add", "Cart", new { id = Model.Id })'" />
+        </div>
+    </div>
+</div>

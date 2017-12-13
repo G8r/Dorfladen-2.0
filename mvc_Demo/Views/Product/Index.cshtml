@@ -1,0 +1,25 @@
+﻿@model IEnumerable<mvc_Demo.Models.Product>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="orange">Aktionen</h2>
+        </div>
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+        <a href="@Url.Action("Details", "Product", new { id = item.Id })">
+            <div class="col-sm-3">
+                <div class="card">
+                    <img class="card-img-top" src="~/Assets/img/Product/@Html.DisplayFor(modelItem => item.ImageName)" alt="Product image" />
+                    <div class="card-body">
+                        <h5 class="card-title orange">@Html.DisplayFor(modelItem => item.Name)</h5>
+                        <p class="card-text">CHF @Html.DisplayFor(modelItem => item.SpecialPrice)  <span class="red"><s>CHF @Html.DisplayFor(modelItem => item.NormalPrice)</s></span></p>
+                    </div>
+                </div>
+            </div>
+        </a>
+        }
+    </div>
+</div>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<mvc_Demo.Models.Product>
+
+<h2 class="orange">Ihr Warenkorb</h2>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Produkt</th>
+            <th scope="col">Preis</th>
+            <th scope="col">Anzahl</th>
+            <th scope="col">Total</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SpecialPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Convert.ToDecimal(item.SpecialPrice * item.Amount)
+                    </td>
+
+                    <td><a class="glyphicon glyphicon-trash" href="@Url.Action("delete", "Cart", new { id = item.Id})"></a></td>
+                </tr>
+            }
+        }
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="cart-total">@ViewBag.Total</td>
+        </tr>
+    </tbody>
+</table>
+<input class="button" type="button" value="Weiter einkaufen" onclick="location.href='@Url.Action("Index", "Product")'" />
