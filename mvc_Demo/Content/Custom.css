@@ -1,13 +1,9 @@
-﻿/* Give the products a little space at the top*/
+﻿/* Main Layout */
 body{
-    margin-top: 50px;
+    margin-top: 40px;
 }
 
-.body-content{
-    min-height: calc(100vh - 70px)
-}
-
-/* Index Page */
+/* Products View */
 .navbar-inverse{
     background-color: orange;
     border-color: orange;
@@ -40,15 +36,20 @@ body{
     background-color: white;
     visibility: hidden;
     -webkit-transform: scaleX(0);
+    -ms-transform: scaleX(0);
     transform: scaleX(0);
     -webkit-transition: all 0.3s ease-in-out 0s;
+    -ms-transition: all 0.3s ease-in-out 0s;
+    -o-transition: all 0.3s ease-in-out 0s;
     transition: all 0.3s ease-in-out 0s;
 }
-    .navbar-inverse .navbar-nav > li > a:not(.menu-cart):hover:before {
-        visibility: visible;
-        -webkit-transform: scaleX(1);
-        transform: scaleX(1);
-    }
+
+.navbar-inverse .navbar-nav > li > a:not(.menu-cart):hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    -ms-transform: scaleX(1);
+    transform: scaleX(1);
+}
 
 .orange{
     color: orange;
@@ -58,12 +59,12 @@ body{
     color: red;
 }
 
-/* Detail Page */
+/* Product Detail View */
 .detail-body{
     margin-top: 50px;
 }
 
-.button{
+.button {
     border-color: orange;
     background-color: white;
     color: orange;
@@ -99,6 +100,8 @@ footer {
     font-size: 12px;
 }
 
+
+/* Style for Desktop and Tablets*/
 @media screen and (min-width: 768px) {
     .menu-cart {
         position: fixed !important;

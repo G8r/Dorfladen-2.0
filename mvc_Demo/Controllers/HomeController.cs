@@ -9,27 +9,48 @@ namespace mvc_Demo.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            ViewBag.Title = "";
-
-            return View();
-        }
-
+        /// <summary>
+        /// GET: Home/About
+        /// Returns a View with the project information
+        /// </summary>
+        /// <returns>View</returns>
         public ActionResult About()
         {
             ViewBag.Title = $"- {@ControllerContext.RouteData.Values["Action"].ToString()}";
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
+        /// <summary>
+        /// GET: Home/Contact
+        /// Returns a View with contact informations
+        /// </summary>
+        /// <returns>View</returns>
         public ActionResult Contact()
         {
             ViewBag.Title = $"- {@ControllerContext.RouteData.Values["Action"].ToString()}";
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        /// <summary>
+        /// GET: HOME/M133Aufgabenanforderung
+        /// Returns a pdf with the project description of the module 133
+        /// </summary>
+        /// <returns>PDF</returns>
+        public ActionResult M133Aufgabenanforderungen()
+        {
+            return File("~/Assets/pdf/m133Projektbeschrieb.pdf", "application/pdf");
+        }
+
+        /// <summary>
+        /// GET: HOME/M426Aufabenanforderungen
+        /// Returns a pdf with the project description of the module 426
+        /// </summary>
+        /// <returns>PDF</returns>
+        public ActionResult M426Aufgabenanforderungen()
+        {
+            return File("~/Assets/pdf/m426Arbeitsauftrag.pdf", "application/pdf");
         }
     }
 }

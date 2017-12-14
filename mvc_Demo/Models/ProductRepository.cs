@@ -6,34 +6,41 @@ using System.Web;
 
 namespace mvc_Demo.Models
 {
+    /// <summary>
+    /// The Productrepository provides methods to get all products or a product with a specific id
+    /// </summary>
     public class ProductRepository
     {
         #region Source
-        List<Product> _products = new List<Product>();
 
+        readonly List<Product> _products = new List<Product>();
+
+        /// <summary>
+        /// Instatiate all the products to work with
+        /// </summary>
         public ProductRepository()
         {
-            GetProductsFromCSV();
+            GetProductsFromCsv();
         }
 
         /// <summary>
-        /// Reads the content from products.csv and createa a product-object foreach line except the first one which conatains the column description
+        /// Reads the content from products.csv which was provided by the teacher and create a product-object foreach line except the first one which contains the column description
         /// and add it to a List<>
         /// </summary>
-        private void GetProductsFromCSV()
+        private void GetProductsFromCsv()
         {
-            string PathToProductsCSV = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets/csv/products.csv");
+            var pathToProductsCsv = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets/csv/products.csv");
 
-            using (StreamReader Sr = new StreamReader(PathToProductsCSV))
+            using (var sr = new StreamReader(pathToProductsCsv))
             {
-                int LineCounter = 0;
-                string CurrentLine;
+                var lineCounter = 0;
+                string currentLine;
 
-                while ((CurrentLine = Sr.ReadLine()) != null)
+                while ((currentLine = sr.ReadLine()) != null)
                 {
-                    if (LineCounter != 0)
+                    if (lineCounter != 0)
                     {
-                        string[] product = CurrentLine.Split(';');
+                        var product = currentLine.Split(';');
                         _products.Add(
                             new Models.Product(
                                 Convert.ToInt32(product[0]),
@@ -43,20 +50,29 @@ namespace mvc_Demo.Models
                                 product[4], product[5])
                         );
                     }
-                    LineCounter++;
+                    lineCounter++;
                 }
             }
         }
         #endregion
 
+        /// <summary>
+        /// Return's all Products that are available in the web-shop
+        /// </summary>
+        /// <returns>IQueryable of type Product</returns>
         public IQueryable<Product> GetAll()
         {
             return _products.AsQueryable();
         }
 
-        public Product GetByID(int? id)
+        /// <summary>
+        /// Retrun's a Product whit the given id
+        /// </summary>
+        /// <param name="id">The id of the Product to get</param>
+        /// <returns>Product</returns>
+        public Product GetById(int? id)
         {
-            return _products.Where(p => p.Id == id).FirstOrDefault();
+            return _products.FirstOrDefault(p => p.Id == id);
         }
     }
 }

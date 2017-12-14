@@ -155,30 +155,30 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\img\Favicon\android-chrome-192x192.png" />
-    <Content Include="Assets\img\Favicon\android-chrome-512x512.png" />
-    <Content Include="Assets\img\Favicon\apple-touch-icon.png" />
-    <Content Include="Assets\img\Favicon\browserconfig.xml" />
-    <Content Include="Assets\img\Favicon\favicon-16x16.png" />
-    <Content Include="Assets\img\Favicon\favicon-32x32.png" />
-    <Content Include="Assets\img\Favicon\favicon.ico" />
-    <Content Include="Assets\img\Favicon\mstile-144x144.png" />
-    <Content Include="Assets\img\Favicon\mstile-150x150.png" />
-    <Content Include="Assets\img\Favicon\mstile-310x150.png" />
-    <Content Include="Assets\img\Favicon\mstile-310x310.png" />
-    <Content Include="Assets\img\Favicon\mstile-70x70.png" />
-    <Content Include="Assets\img\Favicon\safari-pinned-tab.svg" />
-    <Content Include="Assets\img\Product\appenzeller.jpg" />
-    <Content Include="Assets\img\Product\eier.jpg" />
-    <Content Include="Assets\img\Product\icedtea.jpg" />
-    <Content Include="Assets\img\Product\kalbsbratwuerste.jpg" />
-    <Content Include="Assets\img\Product\krustenkranz.jpg" />
-    <Content Include="Assets\img\Product\logo.png" />
-    <Content Include="Assets\img\Product\nektarinen.jpg" />
-    <Content Include="Assets\img\Product\olivenoel.jpg" />
-    <Content Include="Assets\img\Product\senf.jpg" />
-    <Content Include="Assets\img\Product\tomaten.jpg" />
-    <Content Include="Assets\img\Product\vanille_glace.jpg" />
+    <Content Include="Assets\img\favicon\android-chrome-192x192.png" />
+    <Content Include="Assets\img\favicon\android-chrome-512x512.png" />
+    <Content Include="Assets\img\favicon\apple-touch-icon.png" />
+    <Content Include="Assets\img\favicon\browserconfig.xml" />
+    <Content Include="Assets\img\favicon\favicon-16x16.png" />
+    <Content Include="Assets\img\favicon\favicon-32x32.png" />
+    <Content Include="Assets\img\favicon\favicon.ico" />
+    <Content Include="Assets\img\favicon\mstile-144x144.png" />
+    <Content Include="Assets\img\favicon\mstile-150x150.png" />
+    <Content Include="Assets\img\favicon\mstile-310x150.png" />
+    <Content Include="Assets\img\favicon\mstile-310x310.png" />
+    <Content Include="Assets\img\favicon\mstile-70x70.png" />
+    <Content Include="Assets\img\favicon\safari-pinned-tab.svg" />
+    <Content Include="Assets\img\product\appenzeller.jpg" />
+    <Content Include="Assets\img\product\eier.jpg" />
+    <Content Include="Assets\img\product\icedtea.jpg" />
+    <Content Include="Assets\img\product\kalbsbratwuerste.jpg" />
+    <Content Include="Assets\img\product\krustenkranz.jpg" />
+    <Content Include="Assets\img\product\logo.png" />
+    <Content Include="Assets\img\product\nektarinen.jpg" />
+    <Content Include="Assets\img\product\olivenoel.jpg" />
+    <Content Include="Assets\img\product\senf.jpg" />
+    <Content Include="Assets\img\product\tomaten.jpg" />
+    <Content Include="Assets\img\product\vanille_glace.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Custom.css" />
@@ -190,8 +190,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\img\Favicon\manifest.json" />
+    <Content Include="Assets\img\favicon\manifest.json" />
     <Content Include="Assets\csv\products.csv" />
+    <Content Include="Assets\pdf\m133Projektbeschrieb.pdf" />
+    <Content Include="Assets\pdf\m426Arbeitsauftrag.pdf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
