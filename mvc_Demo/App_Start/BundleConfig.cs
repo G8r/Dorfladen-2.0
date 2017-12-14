@@ -3,6 +3,9 @@ using System.Web.Optimization;
 
 namespace mvc_Demo
 {
+    /// <summary>
+    /// Bundle configuration - all bundles to load for the project
+    /// </summary>
     public class BundleConfig
     {
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862

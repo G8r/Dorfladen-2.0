@@ -13,21 +13,21 @@ namespace mvc_Demo.Models
     {
         #region Source
 
-        readonly List<Product> _products = new List<Product>();
+        private readonly List<Product> _products = new List<Product>();
 
         /// <summary>
         /// Instatiate all the products to work with
         /// </summary>
         public ProductRepository()
         {
-            GetProductsFromCsv();
+            InstantiateProductsFromCsv();
         }
 
         /// <summary>
         /// Reads the content from products.csv which was provided by the teacher and create a product-object foreach line except the first one which contains the column description
         /// and add it to a List<>
         /// </summary>
-        private void GetProductsFromCsv()
+        private void InstantiateProductsFromCsv()
         {
             var pathToProductsCsv = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets/csv/products.csv");
 

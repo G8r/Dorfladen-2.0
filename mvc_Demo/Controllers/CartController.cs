@@ -23,19 +23,17 @@ namespace mvc_Demo.Controllers
 
         /// <summary>
         /// GET: Cart/Add
-        /// Add's the Product with the id from the parameter and store the result in the Session variable "CartItemAmount"
+        /// Add's the Product with the id from the parameter into the cart and store the result in the Session variable "CartItemAmount"
         /// </summary>
         /// <param name="id"></param>
         /// <returns>View with Model of IQueryable of Type Product</returns>
         public ActionResult Add(int id)
         {
-            var products = _productRepository.GetAll();
-            var product = products.FirstOrDefault(p => p.Id == id);
+            var product = _productRepository.GetById(id);
             var cartItems = _cartRepository.GetAll();
-            int totalItems = (int)Session["cartItemAmount"];
 
             //Check if the product is already in the cart
-            if (cartItems.Count(n => n.Name == product.Name) >= 1)
+            if (cartItems.ToList().Exists(p => p.Name == product.Name))
             {
                 cartItems.Where(p => p.Name == product.Name).ToList().ForEach(a => a.Amount++);
             }
@@ -45,11 +43,10 @@ namespace mvc_Demo.Controllers
             }
 
             //update total items
-            totalItems++;
-            Session["cartItemAmount"] = totalItems;
+            Session["cartItemAmount"] = (int)Session["cartItemAmount"] + 1;
 
             var updatedCartItems = _cartRepository.GetAll();
-            ViewBag.Total = GetTotal(updatedCartItems);
+            ViewBag.Total = GetTotalPrice(updatedCartItems);
 
             return View("Cart", updatedCartItems);
         }
@@ -62,13 +59,11 @@ namespace mvc_Demo.Controllers
         /// <returns>View with Model of IQueryable of Type Product</returns>
         public ActionResult Delete(int id)
         {
-            var products = _productRepository.GetAll();
-            var product = products.FirstOrDefault(p => p.Id == id);
+            var product = _productRepository.GetById(id);
             var cartItems = _cartRepository.GetAll();
-            int totalCartItems = (int)Session["cartItemAmount"];
 
             //Check if the products name already exists in the shopping-cart and it has more then one item of it
-            if (cartItems.Count(n => n.Name == product.Name) > 0 && cartItems.First(n => n.Name == product.Name).Amount > 1)
+            if (cartItems.First(n => n.Name == product.Name).Amount > 1)
             {
                 cartItems.Where(p => p.Name == product.Name).ToList().ForEach(a => a.Amount--);
             }
@@ -78,11 +73,10 @@ namespace mvc_Demo.Controllers
             }
 
             //update the amount of shopping-cart items
-            totalCartItems--;
-            Session["cartItemAmount"] = totalCartItems;
+            Session["cartItemAmount"] = (int)Session["cartItemAmount"] - 1;
 
             var updatedCartItems = _cartRepository.GetAll();
-            ViewBag.Total = GetTotal(updatedCartItems);
+            ViewBag.Total = GetTotalPrice(updatedCartItems);
 
             return View("Cart", updatedCartItems);
         }
@@ -92,7 +86,7 @@ namespace mvc_Demo.Controllers
         /// </summary>
         /// <param name="items">Requires a parameter of IQueryable with type Product </param>
         /// <returns>dynamic object</returns>
-        private dynamic GetTotal(IQueryable<Product> items)
+        private decimal GetTotalPrice(IQueryable<Product> items)
         {
             foreach (var item in items)
             {
